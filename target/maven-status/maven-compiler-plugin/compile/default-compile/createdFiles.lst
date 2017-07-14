@@ -1,0 +1,10 @@
+learning\mapper\PlayerDao.class
+learning\controller\RedisController.class
+learning\controller\TestController.class
+learning\utils\redis\RedisClient.class
+learning\service\impl\PlayerServiceImpl.class
+learning\model\Player.class
+learning\AppStart.class
+learning\conf\RedisConfig.class
+learning\conf\MybatisConfig.class
+learning\service\myinterface\PlayerService.class
