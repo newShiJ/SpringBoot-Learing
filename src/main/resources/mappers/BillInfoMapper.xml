@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.mapper.BillInfoMapper">
+  <resultMap id="BaseResultMap" type="learning.model.BillInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="op_cmy_code" jdbcType="VARCHAR" property="opCmyCode" />
+    <result column="op_cmy_name" jdbcType="VARCHAR" property="opCmyName" />
+    <result column="op_time" jdbcType="VARCHAR" property="opTime" />
+    <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="BIGINT" property="reserved4" />
+    <result column="reserved5" jdbcType="BIGINT" property="reserved5" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="accept_cmy_code" jdbcType="VARCHAR" property="acceptCmyCode" />
+    <result column="accept_cmy_name" jdbcType="VARCHAR" property="acceptCmyName" />
+    <result column="apply_issue_cmy_code" jdbcType="VARCHAR" property="applyIssueCmyCode" />
+    <result column="apply_issue_cmy_name" jdbcType="VARCHAR" property="applyIssueCmyName" />
+    <result column="apply_issue_date" jdbcType="VARCHAR" property="applyIssueDate" />
+    <result column="assets_attachment_name" jdbcType="VARCHAR" property="assetsAttachmentName" />
+    <result column="assets_attachment_url" jdbcType="VARCHAR" property="assetsAttachmentUrl" />
+    <result column="bill_amount" jdbcType="BIGINT" property="billAmount" />
+    <result column="bill_code" jdbcType="VARCHAR" property="billCode" />
+    <result column="bill_type" jdbcType="VARCHAR" property="billType" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="current_amount" jdbcType="BIGINT" property="currentAmount" />
+    <result column="expire_date" jdbcType="VARCHAR" property="expireDate" />
+    <result column="factor_cmy_code" jdbcType="VARCHAR" property="factorCmyCode" />
+    <result column="factor_cmy_name" jdbcType="VARCHAR" property="factorCmyName" />
+    <result column="financial_cmy_code" jdbcType="VARCHAR" property="financialCmyCode" />
+    <result column="financial_cmy_name" jdbcType="VARCHAR" property="financialCmyName" />
+    <result column="frozen" jdbcType="VARCHAR" property="frozen" />
+    <result column="guarantee_cmy_code" jdbcType="VARCHAR" property="guaranteeCmyCode" />
+    <result column="guarantee_cmy_name" jdbcType="VARCHAR" property="guaranteeCmyName" />
+    <result column="guarantee_letter_url" jdbcType="VARCHAR" property="guaranteeLetterUrl" />
+    <result column="guarantee_status" jdbcType="VARCHAR" property="guaranteeStatus" />
+    <result column="hold_cmy_code" jdbcType="VARCHAR" property="holdCmyCode" />
+    <result column="hold_cmy_name" jdbcType="VARCHAR" property="holdCmyName" />
+    <result column="issue_cmy_code" jdbcType="VARCHAR" property="issueCmyCode" />
+    <result column="issue_cmy_name" jdbcType="VARCHAR" property="issueCmyName" />
+    <result column="last_holder_cmy_code" jdbcType="VARCHAR" property="lastHolderCmyCode" />
+    <result column="last_holder_cmy_name" jdbcType="VARCHAR" property="lastHolderCmyName" />
+    <result column="parent_bill_code" jdbcType="VARCHAR" property="parentBillCode" />
+    <result column="promise_date" jdbcType="VARCHAR" property="promiseDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="root_bill_code" jdbcType="VARCHAR" property="rootBillCode" />
+    <result column="source_type" jdbcType="VARCHAR" property="sourceType" />
+    <result column="start_hold_date" jdbcType="VARCHAR" property="startHoldDate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="summary_name" jdbcType="VARCHAR" property="summaryName" />
+    <result column="summary_url" jdbcType="VARCHAR" property="summaryUrl" />
+    <result column="guarantee_letter_name" jdbcType="VARCHAR" property="guaranteeLetterName" />
+    <result column="issue_date" jdbcType="VARCHAR" property="issueDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, deleted, op_cmy_code, op_cmy_name, op_time, operator_code, operator_name, 
+    reserved1, reserved2, reserved3, reserved4, reserved5, signature, version, accept_cmy_code, 
+    accept_cmy_name, apply_issue_cmy_code, apply_issue_cmy_name, apply_issue_date, assets_attachment_name, 
+    assets_attachment_url, bill_amount, bill_code, bill_type, business_no, current_amount, 
+    expire_date, factor_cmy_code, factor_cmy_name, financial_cmy_code, financial_cmy_name, 
+    frozen, guarantee_cmy_code, guarantee_cmy_name, guarantee_letter_url, guarantee_status, 
+    hold_cmy_code, hold_cmy_name, issue_cmy_code, issue_cmy_name, last_holder_cmy_code, 
+    last_holder_cmy_name, parent_bill_code, promise_date, remark, root_bill_code, source_type, 
+    start_hold_date, status, summary_name, summary_url, guarantee_letter_name, issue_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bill_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="learning.model.BillInfo">
+    insert into bill_info (id, create_time, deleted, 
+      op_cmy_code, op_cmy_name, op_time, 
+      operator_code, operator_name, reserved1, 
+      reserved2, reserved3, reserved4, 
+      reserved5, signature, version, 
+      accept_cmy_code, accept_cmy_name, apply_issue_cmy_code, 
+      apply_issue_cmy_name, apply_issue_date, assets_attachment_name, 
+      assets_attachment_url, bill_amount, bill_code, 
+      bill_type, business_no, current_amount, 
+      expire_date, factor_cmy_code, factor_cmy_name, 
+      financial_cmy_code, financial_cmy_name, frozen, 
+      guarantee_cmy_code, guarantee_cmy_name, guarantee_letter_url, 
+      guarantee_status, hold_cmy_code, hold_cmy_name, 
+      issue_cmy_code, issue_cmy_name, last_holder_cmy_code, 
+      last_holder_cmy_name, parent_bill_code, promise_date, 
+      remark, root_bill_code, source_type, 
+      start_hold_date, status, summary_name, 
+      summary_url, guarantee_letter_name, issue_date
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}, 
+      #{opCmyCode,jdbcType=VARCHAR}, #{opCmyName,jdbcType=VARCHAR}, #{opTime,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=BIGINT}, 
+      #{reserved5,jdbcType=BIGINT}, #{signature,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{acceptCmyCode,jdbcType=VARCHAR}, #{acceptCmyName,jdbcType=VARCHAR}, #{applyIssueCmyCode,jdbcType=VARCHAR}, 
+      #{applyIssueCmyName,jdbcType=VARCHAR}, #{applyIssueDate,jdbcType=VARCHAR}, #{assetsAttachmentName,jdbcType=VARCHAR}, 
+      #{assetsAttachmentUrl,jdbcType=VARCHAR}, #{billAmount,jdbcType=BIGINT}, #{billCode,jdbcType=VARCHAR}, 
+      #{billType,jdbcType=VARCHAR}, #{businessNo,jdbcType=VARCHAR}, #{currentAmount,jdbcType=BIGINT}, 
+      #{expireDate,jdbcType=VARCHAR}, #{factorCmyCode,jdbcType=VARCHAR}, #{factorCmyName,jdbcType=VARCHAR}, 
+      #{financialCmyCode,jdbcType=VARCHAR}, #{financialCmyName,jdbcType=VARCHAR}, #{frozen,jdbcType=VARCHAR}, 
+      #{guaranteeCmyCode,jdbcType=VARCHAR}, #{guaranteeCmyName,jdbcType=VARCHAR}, #{guaranteeLetterUrl,jdbcType=VARCHAR}, 
+      #{guaranteeStatus,jdbcType=VARCHAR}, #{holdCmyCode,jdbcType=VARCHAR}, #{holdCmyName,jdbcType=VARCHAR}, 
+      #{issueCmyCode,jdbcType=VARCHAR}, #{issueCmyName,jdbcType=VARCHAR}, #{lastHolderCmyCode,jdbcType=VARCHAR}, 
+      #{lastHolderCmyName,jdbcType=VARCHAR}, #{parentBillCode,jdbcType=VARCHAR}, #{promiseDate,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{rootBillCode,jdbcType=VARCHAR}, #{sourceType,jdbcType=VARCHAR}, 
+      #{startHoldDate,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{summaryName,jdbcType=VARCHAR}, 
+      #{summaryUrl,jdbcType=VARCHAR}, #{guaranteeLetterName,jdbcType=VARCHAR}, #{issueDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="learning.model.BillInfo">
+    insert into bill_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code,
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name,
+      </if>
+      <if test="opTime != null">
+        op_time,
+      </if>
+      <if test="operatorCode != null">
+        operator_code,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="acceptCmyCode != null">
+        accept_cmy_code,
+      </if>
+      <if test="acceptCmyName != null">
+        accept_cmy_name,
+      </if>
+      <if test="applyIssueCmyCode != null">
+        apply_issue_cmy_code,
+      </if>
+      <if test="applyIssueCmyName != null">
+        apply_issue_cmy_name,
+      </if>
+      <if test="applyIssueDate != null">
+        apply_issue_date,
+      </if>
+      <if test="assetsAttachmentName != null">
+        assets_attachment_name,
+      </if>
+      <if test="assetsAttachmentUrl != null">
+        assets_attachment_url,
+      </if>
+      <if test="billAmount != null">
+        bill_amount,
+      </if>
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="billType != null">
+        bill_type,
+      </if>
+      <if test="businessNo != null">
+        business_no,
+      </if>
+      <if test="currentAmount != null">
+        current_amount,
+      </if>
+      <if test="expireDate != null">
+        expire_date,
+      </if>
+      <if test="factorCmyCode != null">
+        factor_cmy_code,
+      </if>
+      <if test="factorCmyName != null">
+        factor_cmy_name,
+      </if>
+      <if test="financialCmyCode != null">
+        financial_cmy_code,
+      </if>
+      <if test="financialCmyName != null">
+        financial_cmy_name,
+      </if>
+      <if test="frozen != null">
+        frozen,
+      </if>
+      <if test="guaranteeCmyCode != null">
+        guarantee_cmy_code,
+      </if>
+      <if test="guaranteeCmyName != null">
+        guarantee_cmy_name,
+      </if>
+      <if test="guaranteeLetterUrl != null">
+        guarantee_letter_url,
+      </if>
+      <if test="guaranteeStatus != null">
+        guarantee_status,
+      </if>
+      <if test="holdCmyCode != null">
+        hold_cmy_code,
+      </if>
+      <if test="holdCmyName != null">
+        hold_cmy_name,
+      </if>
+      <if test="issueCmyCode != null">
+        issue_cmy_code,
+      </if>
+      <if test="issueCmyName != null">
+        issue_cmy_name,
+      </if>
+      <if test="lastHolderCmyCode != null">
+        last_holder_cmy_code,
+      </if>
+      <if test="lastHolderCmyName != null">
+        last_holder_cmy_name,
+      </if>
+      <if test="parentBillCode != null">
+        parent_bill_code,
+      </if>
+      <if test="promiseDate != null">
+        promise_date,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="rootBillCode != null">
+        root_bill_code,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="startHoldDate != null">
+        start_hold_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="summaryName != null">
+        summary_name,
+      </if>
+      <if test="summaryUrl != null">
+        summary_url,
+      </if>
+      <if test="guaranteeLetterName != null">
+        guarantee_letter_name,
+      </if>
+      <if test="issueDate != null">
+        issue_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="acceptCmyCode != null">
+        #{acceptCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptCmyName != null">
+        #{acceptCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueCmyCode != null">
+        #{applyIssueCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueCmyName != null">
+        #{applyIssueCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueDate != null">
+        #{applyIssueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsAttachmentName != null">
+        #{assetsAttachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsAttachmentUrl != null">
+        #{assetsAttachmentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="billAmount != null">
+        #{billAmount,jdbcType=BIGINT},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="currentAmount != null">
+        #{currentAmount,jdbcType=BIGINT},
+      </if>
+      <if test="expireDate != null">
+        #{expireDate,jdbcType=VARCHAR},
+      </if>
+      <if test="factorCmyCode != null">
+        #{factorCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="factorCmyName != null">
+        #{factorCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="financialCmyCode != null">
+        #{financialCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="financialCmyName != null">
+        #{financialCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="frozen != null">
+        #{frozen,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeCmyCode != null">
+        #{guaranteeCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeCmyName != null">
+        #{guaranteeCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeLetterUrl != null">
+        #{guaranteeLetterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeStatus != null">
+        #{guaranteeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCmyCode != null">
+        #{holdCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCmyName != null">
+        #{holdCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCmyCode != null">
+        #{issueCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCmyName != null">
+        #{issueCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHolderCmyCode != null">
+        #{lastHolderCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHolderCmyName != null">
+        #{lastHolderCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentBillCode != null">
+        #{parentBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promiseDate != null">
+        #{promiseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="rootBillCode != null">
+        #{rootBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="startHoldDate != null">
+        #{startHoldDate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryName != null">
+        #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryUrl != null">
+        #{summaryUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeLetterName != null">
+        #{guaranteeLetterName,jdbcType=VARCHAR},
+      </if>
+      <if test="issueDate != null">
+        #{issueDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="learning.model.BillInfo">
+    update bill_info
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        op_time = #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        operator_code = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="acceptCmyCode != null">
+        accept_cmy_code = #{acceptCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptCmyName != null">
+        accept_cmy_name = #{acceptCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueCmyCode != null">
+        apply_issue_cmy_code = #{applyIssueCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueCmyName != null">
+        apply_issue_cmy_name = #{applyIssueCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIssueDate != null">
+        apply_issue_date = #{applyIssueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsAttachmentName != null">
+        assets_attachment_name = #{assetsAttachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsAttachmentUrl != null">
+        assets_attachment_url = #{assetsAttachmentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="billAmount != null">
+        bill_amount = #{billAmount,jdbcType=BIGINT},
+      </if>
+      <if test="billCode != null">
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        bill_type = #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="currentAmount != null">
+        current_amount = #{currentAmount,jdbcType=BIGINT},
+      </if>
+      <if test="expireDate != null">
+        expire_date = #{expireDate,jdbcType=VARCHAR},
+      </if>
+      <if test="factorCmyCode != null">
+        factor_cmy_code = #{factorCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="factorCmyName != null">
+        factor_cmy_name = #{factorCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="financialCmyCode != null">
+        financial_cmy_code = #{financialCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="financialCmyName != null">
+        financial_cmy_name = #{financialCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="frozen != null">
+        frozen = #{frozen,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeCmyCode != null">
+        guarantee_cmy_code = #{guaranteeCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeCmyName != null">
+        guarantee_cmy_name = #{guaranteeCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeLetterUrl != null">
+        guarantee_letter_url = #{guaranteeLetterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeStatus != null">
+        guarantee_status = #{guaranteeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCmyCode != null">
+        hold_cmy_code = #{holdCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCmyName != null">
+        hold_cmy_name = #{holdCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCmyCode != null">
+        issue_cmy_code = #{issueCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCmyName != null">
+        issue_cmy_name = #{issueCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHolderCmyCode != null">
+        last_holder_cmy_code = #{lastHolderCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHolderCmyName != null">
+        last_holder_cmy_name = #{lastHolderCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentBillCode != null">
+        parent_bill_code = #{parentBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promiseDate != null">
+        promise_date = #{promiseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="rootBillCode != null">
+        root_bill_code = #{rootBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="startHoldDate != null">
+        start_hold_date = #{startHoldDate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryName != null">
+        summary_name = #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryUrl != null">
+        summary_url = #{summaryUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeLetterName != null">
+        guarantee_letter_name = #{guaranteeLetterName,jdbcType=VARCHAR},
+      </if>
+      <if test="issueDate != null">
+        issue_date = #{issueDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="learning.model.BillInfo">
+    update bill_info
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=VARCHAR},
+      operator_code = #{operatorCode,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=BIGINT},
+      reserved5 = #{reserved5,jdbcType=BIGINT},
+      signature = #{signature,jdbcType=VARCHAR},
+      accept_cmy_code = #{acceptCmyCode,jdbcType=VARCHAR},
+      accept_cmy_name = #{acceptCmyName,jdbcType=VARCHAR},
+      apply_issue_cmy_code = #{applyIssueCmyCode,jdbcType=VARCHAR},
+      apply_issue_cmy_name = #{applyIssueCmyName,jdbcType=VARCHAR},
+      apply_issue_date = #{applyIssueDate,jdbcType=VARCHAR},
+      assets_attachment_name = #{assetsAttachmentName,jdbcType=VARCHAR},
+      assets_attachment_url = #{assetsAttachmentUrl,jdbcType=VARCHAR},
+      bill_amount = #{billAmount,jdbcType=BIGINT},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      bill_type = #{billType,jdbcType=VARCHAR},
+      business_no = #{businessNo,jdbcType=VARCHAR},
+      current_amount = #{currentAmount,jdbcType=BIGINT},
+      expire_date = #{expireDate,jdbcType=VARCHAR},
+      factor_cmy_code = #{factorCmyCode,jdbcType=VARCHAR},
+      factor_cmy_name = #{factorCmyName,jdbcType=VARCHAR},
+      financial_cmy_code = #{financialCmyCode,jdbcType=VARCHAR},
+      financial_cmy_name = #{financialCmyName,jdbcType=VARCHAR},
+      frozen = #{frozen,jdbcType=VARCHAR},
+      guarantee_cmy_code = #{guaranteeCmyCode,jdbcType=VARCHAR},
+      guarantee_cmy_name = #{guaranteeCmyName,jdbcType=VARCHAR},
+      guarantee_letter_url = #{guaranteeLetterUrl,jdbcType=VARCHAR},
+      guarantee_status = #{guaranteeStatus,jdbcType=VARCHAR},
+      hold_cmy_code = #{holdCmyCode,jdbcType=VARCHAR},
+      hold_cmy_name = #{holdCmyName,jdbcType=VARCHAR},
+      issue_cmy_code = #{issueCmyCode,jdbcType=VARCHAR},
+      issue_cmy_name = #{issueCmyName,jdbcType=VARCHAR},
+      last_holder_cmy_code = #{lastHolderCmyCode,jdbcType=VARCHAR},
+      last_holder_cmy_name = #{lastHolderCmyName,jdbcType=VARCHAR},
+      parent_bill_code = #{parentBillCode,jdbcType=VARCHAR},
+      promise_date = #{promiseDate,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      root_bill_code = #{rootBillCode,jdbcType=VARCHAR},
+      source_type = #{sourceType,jdbcType=VARCHAR},
+      start_hold_date = #{startHoldDate,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      summary_name = #{summaryName,jdbcType=VARCHAR},
+      summary_url = #{summaryUrl,jdbcType=VARCHAR},
+      guarantee_letter_name = #{guaranteeLetterName,jdbcType=VARCHAR},
+      issue_date = #{issueDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include  refid="Base_Column_List" /> FROM bill_info
+  </select>
+</mapper>

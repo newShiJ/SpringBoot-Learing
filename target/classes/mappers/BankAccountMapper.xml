@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.mapper.BankAccountMapper">
+  <resultMap id="BaseResultMap" type="learning.model.BankAccount">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="op_cmy_code" jdbcType="VARCHAR" property="opCmyCode" />
+    <result column="op_cmy_name" jdbcType="VARCHAR" property="opCmyName" />
+    <result column="op_time" jdbcType="VARCHAR" property="opTime" />
+    <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="BIGINT" property="reserved4" />
+    <result column="reserved5" jdbcType="BIGINT" property="reserved5" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="account_state" jdbcType="VARCHAR" property="accountState" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+    <result column="bank_number" jdbcType="VARCHAR" property="bankNumber" />
+    <result column="cmy_code" jdbcType="VARCHAR" property="cmyCode" />
+    <result column="cmy_name" jdbcType="VARCHAR" property="cmyName" />
+    <result column="is_default_account" jdbcType="VARCHAR" property="isDefaultAccount" />
+    <result column="open_bank" jdbcType="VARCHAR" property="openBank" />
+    <result column="open_city" jdbcType="VARCHAR" property="openCity" />
+    <result column="open_province" jdbcType="VARCHAR" property="openProvince" />
+    <result column="open_sub_branch" jdbcType="VARCHAR" property="openSubBranch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, deleted, op_cmy_code, op_cmy_name, op_time, operator_code, operator_name, 
+    reserved1, reserved2, reserved3, reserved4, reserved5, signature, version, account_name, 
+    account_state, account_type, bank_number, cmy_code, cmy_name, is_default_account, 
+    open_bank, open_city, open_province, open_sub_branch
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bank_account
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bank_account
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="learning.model.BankAccount">
+    insert into bank_account (id, create_time, deleted, 
+      op_cmy_code, op_cmy_name, op_time, 
+      operator_code, operator_name, reserved1, 
+      reserved2, reserved3, reserved4, 
+      reserved5, signature, version, 
+      account_name, account_state, account_type, 
+      bank_number, cmy_code, cmy_name, 
+      is_default_account, open_bank, open_city, 
+      open_province, open_sub_branch)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}, 
+      #{opCmyCode,jdbcType=VARCHAR}, #{opCmyName,jdbcType=VARCHAR}, #{opTime,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=BIGINT}, 
+      #{reserved5,jdbcType=BIGINT}, #{signature,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{accountName,jdbcType=VARCHAR}, #{accountState,jdbcType=VARCHAR}, #{accountType,jdbcType=VARCHAR}, 
+      #{bankNumber,jdbcType=VARCHAR}, #{cmyCode,jdbcType=VARCHAR}, #{cmyName,jdbcType=VARCHAR}, 
+      #{isDefaultAccount,jdbcType=VARCHAR}, #{openBank,jdbcType=VARCHAR}, #{openCity,jdbcType=VARCHAR}, 
+      #{openProvince,jdbcType=VARCHAR}, #{openSubBranch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="learning.model.BankAccount">
+    insert into bank_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code,
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name,
+      </if>
+      <if test="opTime != null">
+        op_time,
+      </if>
+      <if test="operatorCode != null">
+        operator_code,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="accountName != null">
+        account_name,
+      </if>
+      <if test="accountState != null">
+        account_state,
+      </if>
+      <if test="accountType != null">
+        account_type,
+      </if>
+      <if test="bankNumber != null">
+        bank_number,
+      </if>
+      <if test="cmyCode != null">
+        cmy_code,
+      </if>
+      <if test="cmyName != null">
+        cmy_name,
+      </if>
+      <if test="isDefaultAccount != null">
+        is_default_account,
+      </if>
+      <if test="openBank != null">
+        open_bank,
+      </if>
+      <if test="openCity != null">
+        open_city,
+      </if>
+      <if test="openProvince != null">
+        open_province,
+      </if>
+      <if test="openSubBranch != null">
+        open_sub_branch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountState != null">
+        #{accountState,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null">
+        #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyCode != null">
+        #{cmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyName != null">
+        #{cmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefaultAccount != null">
+        #{isDefaultAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="openCity != null">
+        #{openCity,jdbcType=VARCHAR},
+      </if>
+      <if test="openProvince != null">
+        #{openProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="openSubBranch != null">
+        #{openSubBranch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="learning.model.BankAccount">
+    update bank_account
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        op_time = #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        operator_code = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountState != null">
+        account_state = #{accountState,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null">
+        bank_number = #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyCode != null">
+        cmy_code = #{cmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyName != null">
+        cmy_name = #{cmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefaultAccount != null">
+        is_default_account = #{isDefaultAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        open_bank = #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="openCity != null">
+        open_city = #{openCity,jdbcType=VARCHAR},
+      </if>
+      <if test="openProvince != null">
+        open_province = #{openProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="openSubBranch != null">
+        open_sub_branch = #{openSubBranch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="learning.model.BankAccount">
+    update bank_account
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=VARCHAR},
+      operator_code = #{operatorCode,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=BIGINT},
+      reserved5 = #{reserved5,jdbcType=BIGINT},
+      signature = #{signature,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      account_name = #{accountName,jdbcType=VARCHAR},
+      account_state = #{accountState,jdbcType=VARCHAR},
+      account_type = #{accountType,jdbcType=VARCHAR},
+      bank_number = #{bankNumber,jdbcType=VARCHAR},
+      cmy_code = #{cmyCode,jdbcType=VARCHAR},
+      cmy_name = #{cmyName,jdbcType=VARCHAR},
+      is_default_account = #{isDefaultAccount,jdbcType=VARCHAR},
+      open_bank = #{openBank,jdbcType=VARCHAR},
+      open_city = #{openCity,jdbcType=VARCHAR},
+      open_province = #{openProvince,jdbcType=VARCHAR},
+      open_sub_branch = #{openSubBranch,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

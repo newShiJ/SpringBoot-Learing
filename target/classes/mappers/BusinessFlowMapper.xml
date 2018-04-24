@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.mapper.BusinessFlowMapper">
+  <resultMap id="BaseResultMap" type="learning.model.BusinessFlow">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="op_cmy_code" jdbcType="VARCHAR" property="opCmyCode" />
+    <result column="op_cmy_name" jdbcType="VARCHAR" property="opCmyName" />
+    <result column="op_time" jdbcType="VARCHAR" property="opTime" />
+    <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="BIGINT" property="reserved4" />
+    <result column="reserved5" jdbcType="BIGINT" property="reserved5" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="attach_ment_url" jdbcType="VARCHAR" property="attachMentUrl" />
+    <result column="bill_code" jdbcType="VARCHAR" property="billCode" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+    <result column="child_bill_code" jdbcType="VARCHAR" property="childBillCode" />
+    <result column="discount_bill_code" jdbcType="VARCHAR" property="discountBillCode" />
+    <result column="next_dealed" jdbcType="VARCHAR" property="nextDealed" />
+    <result column="last_cmy_code" jdbcType="VARCHAR" property="lastCmyCode" />
+    <result column="last_cmy_name" jdbcType="VARCHAR" property="lastCmyName" />
+    <result column="last_deal_time" jdbcType="VARCHAR" property="lastDealTime" />
+    <result column="last_operator_code" jdbcType="VARCHAR" property="lastOperatorCode" />
+    <result column="last_operator_name" jdbcType="VARCHAR" property="lastOperatorName" />
+    <result column="last_remark" jdbcType="VARCHAR" property="lastRemark" />
+    <result column="last_result" jdbcType="VARCHAR" property="lastResult" />
+    <result column="next_cmy_code" jdbcType="VARCHAR" property="nextCmyCode" />
+    <result column="next_cmy_name" jdbcType="VARCHAR" property="nextCmyName" />
+    <result column="business_detail_type" jdbcType="VARCHAR" property="businessDetailType" />
+    <result column="business_result" jdbcType="VARCHAR" property="businessResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, deleted, op_cmy_code, op_cmy_name, op_time, operator_code, operator_name, 
+    reserved1, reserved2, reserved3, reserved4, reserved5, signature, version, amount, 
+    attach_ment_url, bill_code, business_no, business_type, child_bill_code, discount_bill_code, 
+    next_dealed, last_cmy_code, last_cmy_name, last_deal_time, last_operator_code, last_operator_name, 
+    last_remark, last_result, next_cmy_code, next_cmy_name, business_detail_type, business_result
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_flow
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from business_flow
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="learning.model.BusinessFlow">
+    insert into business_flow (id, create_time, deleted, 
+      op_cmy_code, op_cmy_name, op_time, 
+      operator_code, operator_name, reserved1, 
+      reserved2, reserved3, reserved4, 
+      reserved5, signature, version, 
+      amount, attach_ment_url, bill_code, 
+      business_no, business_type, child_bill_code, 
+      discount_bill_code, next_dealed, last_cmy_code, 
+      last_cmy_name, last_deal_time, last_operator_code, 
+      last_operator_name, last_remark, last_result, 
+      next_cmy_code, next_cmy_name, business_detail_type, 
+      business_result)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}, 
+      #{opCmyCode,jdbcType=VARCHAR}, #{opCmyName,jdbcType=VARCHAR}, #{opTime,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=BIGINT}, 
+      #{reserved5,jdbcType=BIGINT}, #{signature,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{amount,jdbcType=BIGINT}, #{attachMentUrl,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, 
+      #{businessNo,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, #{childBillCode,jdbcType=VARCHAR}, 
+      #{discountBillCode,jdbcType=VARCHAR}, #{nextDealed,jdbcType=VARCHAR}, #{lastCmyCode,jdbcType=VARCHAR}, 
+      #{lastCmyName,jdbcType=VARCHAR}, #{lastDealTime,jdbcType=VARCHAR}, #{lastOperatorCode,jdbcType=VARCHAR}, 
+      #{lastOperatorName,jdbcType=VARCHAR}, #{lastRemark,jdbcType=VARCHAR}, #{lastResult,jdbcType=VARCHAR}, 
+      #{nextCmyCode,jdbcType=VARCHAR}, #{nextCmyName,jdbcType=VARCHAR}, #{businessDetailType,jdbcType=VARCHAR}, 
+      #{businessResult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="learning.model.BusinessFlow">
+    insert into business_flow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code,
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name,
+      </if>
+      <if test="opTime != null">
+        op_time,
+      </if>
+      <if test="operatorCode != null">
+        operator_code,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="attachMentUrl != null">
+        attach_ment_url,
+      </if>
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="businessNo != null">
+        business_no,
+      </if>
+      <if test="businessType != null">
+        business_type,
+      </if>
+      <if test="childBillCode != null">
+        child_bill_code,
+      </if>
+      <if test="discountBillCode != null">
+        discount_bill_code,
+      </if>
+      <if test="nextDealed != null">
+        next_dealed,
+      </if>
+      <if test="lastCmyCode != null">
+        last_cmy_code,
+      </if>
+      <if test="lastCmyName != null">
+        last_cmy_name,
+      </if>
+      <if test="lastDealTime != null">
+        last_deal_time,
+      </if>
+      <if test="lastOperatorCode != null">
+        last_operator_code,
+      </if>
+      <if test="lastOperatorName != null">
+        last_operator_name,
+      </if>
+      <if test="lastRemark != null">
+        last_remark,
+      </if>
+      <if test="lastResult != null">
+        last_result,
+      </if>
+      <if test="nextCmyCode != null">
+        next_cmy_code,
+      </if>
+      <if test="nextCmyName != null">
+        next_cmy_name,
+      </if>
+      <if test="businessDetailType != null">
+        business_detail_type,
+      </if>
+      <if test="businessResult != null">
+        business_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="attachMentUrl != null">
+        #{attachMentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="childBillCode != null">
+        #{childBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="discountBillCode != null">
+        #{discountBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nextDealed != null">
+        #{nextDealed,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCmyCode != null">
+        #{lastCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCmyName != null">
+        #{lastCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDealTime != null">
+        #{lastDealTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOperatorCode != null">
+        #{lastOperatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOperatorName != null">
+        #{lastOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRemark != null">
+        #{lastRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastResult != null">
+        #{lastResult,jdbcType=VARCHAR},
+      </if>
+      <if test="nextCmyCode != null">
+        #{nextCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nextCmyName != null">
+        #{nextCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDetailType != null">
+        #{businessDetailType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessResult != null">
+        #{businessResult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="learning.model.BusinessFlow">
+    update business_flow
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        op_time = #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        operator_code = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="attachMentUrl != null">
+        attach_ment_url = #{attachMentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="childBillCode != null">
+        child_bill_code = #{childBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="discountBillCode != null">
+        discount_bill_code = #{discountBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nextDealed != null">
+        next_dealed = #{nextDealed,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCmyCode != null">
+        last_cmy_code = #{lastCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCmyName != null">
+        last_cmy_name = #{lastCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDealTime != null">
+        last_deal_time = #{lastDealTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOperatorCode != null">
+        last_operator_code = #{lastOperatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOperatorName != null">
+        last_operator_name = #{lastOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRemark != null">
+        last_remark = #{lastRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastResult != null">
+        last_result = #{lastResult,jdbcType=VARCHAR},
+      </if>
+      <if test="nextCmyCode != null">
+        next_cmy_code = #{nextCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nextCmyName != null">
+        next_cmy_name = #{nextCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDetailType != null">
+        business_detail_type = #{businessDetailType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessResult != null">
+        business_result = #{businessResult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="learning.model.BusinessFlow">
+    update business_flow
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=VARCHAR},
+      operator_code = #{operatorCode,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=BIGINT},
+      reserved5 = #{reserved5,jdbcType=BIGINT},
+      signature = #{signature,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=BIGINT},
+      attach_ment_url = #{attachMentUrl,jdbcType=VARCHAR},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      business_no = #{businessNo,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=VARCHAR},
+      child_bill_code = #{childBillCode,jdbcType=VARCHAR},
+      discount_bill_code = #{discountBillCode,jdbcType=VARCHAR},
+      next_dealed = #{nextDealed,jdbcType=VARCHAR},
+      last_cmy_code = #{lastCmyCode,jdbcType=VARCHAR},
+      last_cmy_name = #{lastCmyName,jdbcType=VARCHAR},
+      last_deal_time = #{lastDealTime,jdbcType=VARCHAR},
+      last_operator_code = #{lastOperatorCode,jdbcType=VARCHAR},
+      last_operator_name = #{lastOperatorName,jdbcType=VARCHAR},
+      last_remark = #{lastRemark,jdbcType=VARCHAR},
+      last_result = #{lastResult,jdbcType=VARCHAR},
+      next_cmy_code = #{nextCmyCode,jdbcType=VARCHAR},
+      next_cmy_name = #{nextCmyName,jdbcType=VARCHAR},
+      business_detail_type = #{businessDetailType,jdbcType=VARCHAR},
+      business_result = #{businessResult,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

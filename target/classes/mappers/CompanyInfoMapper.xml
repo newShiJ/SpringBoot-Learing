@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.mapper.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="learning.model.CompanyInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="op_cmy_code" jdbcType="VARCHAR" property="opCmyCode" />
+    <result column="op_cmy_name" jdbcType="VARCHAR" property="opCmyName" />
+    <result column="op_time" jdbcType="VARCHAR" property="opTime" />
+    <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="BIGINT" property="reserved4" />
+    <result column="reserved5" jdbcType="BIGINT" property="reserved5" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="admin_id_number_back_url" jdbcType="VARCHAR" property="adminIdNumberBackUrl" />
+    <result column="admin_id_number_front_url" jdbcType="VARCHAR" property="adminIdNumberFrontUrl" />
+    <result column="apply_audit_time" jdbcType="VARCHAR" property="applyAuditTime" />
+    <result column="audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
+    <result column="audit_time" jdbcType="VARCHAR" property="auditTime" />
+    <result column="authorization_letter_url" jdbcType="VARCHAR" property="authorizationLetterUrl" />
+    <result column="bank_account_evidence_url" jdbcType="VARCHAR" property="bankAccountEvidenceUrl" />
+    <result column="business_license_url" jdbcType="VARCHAR" property="businessLicenseUrl" />
+    <result column="business_scope" jdbcType="VARCHAR" property="businessScope" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="cmy_address" jdbcType="VARCHAR" property="cmyAddress" />
+    <result column="cmy_code" jdbcType="VARCHAR" property="cmyCode" />
+    <result column="cmy_name" jdbcType="VARCHAR" property="cmyName" />
+    <result column="cmy_org_code" jdbcType="VARCHAR" property="cmyOrgCode" />
+    <result column="cmy_phone" jdbcType="VARCHAR" property="cmyPhone" />
+    <result column="cmy_postcode" jdbcType="VARCHAR" property="cmyPostcode" />
+    <result column="cmy_scale" jdbcType="VARCHAR" property="cmyScale" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="establishment_time" jdbcType="VARCHAR" property="establishmentTime" />
+    <result column="legal_person_certificate" jdbcType="VARCHAR" property="legalPersonCertificate" />
+    <result column="legal_person_id_number_back_url" jdbcType="VARCHAR" property="legalPersonIdNumberBackUrl" />
+    <result column="legal_person_id_number_front_url" jdbcType="VARCHAR" property="legalPersonIdNumberFrontUrl" />
+    <result column="legal_person_name" jdbcType="VARCHAR" property="legalPersonName" />
+    <result column="license_number" jdbcType="VARCHAR" property="licenseNumber" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="registered_capital" jdbcType="VARCHAR" property="registeredCapital" />
+    <result column="social_credit_code" jdbcType="VARCHAR" property="socialCreditCode" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, deleted, op_cmy_code, op_cmy_name, op_time, operator_code, operator_name, 
+    reserved1, reserved2, reserved3, reserved4, reserved5, signature, version, admin_id_number_back_url, 
+    admin_id_number_front_url, apply_audit_time, audit_opinion, audit_time, authorization_letter_url, 
+    bank_account_evidence_url, business_license_url, business_scope, city, cmy_address, 
+    cmy_code, cmy_name, cmy_org_code, cmy_phone, cmy_postcode, cmy_scale, description, 
+    establishment_time, legal_person_certificate, legal_person_id_number_back_url, legal_person_id_number_front_url, 
+    legal_person_name, license_number, logo_url, province, registered_capital, social_credit_code, 
+    state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from company_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="learning.model.CompanyInfo">
+    insert into company_info (id, create_time, deleted, 
+      op_cmy_code, op_cmy_name, op_time, 
+      operator_code, operator_name, reserved1, 
+      reserved2, reserved3, reserved4, 
+      reserved5, signature, version, 
+      admin_id_number_back_url, admin_id_number_front_url, 
+      apply_audit_time, audit_opinion, audit_time, 
+      authorization_letter_url, bank_account_evidence_url, 
+      business_license_url, business_scope, city, 
+      cmy_address, cmy_code, cmy_name, 
+      cmy_org_code, cmy_phone, cmy_postcode, 
+      cmy_scale, description, establishment_time, 
+      legal_person_certificate, legal_person_id_number_back_url, 
+      legal_person_id_number_front_url, legal_person_name, 
+      license_number, logo_url, province, 
+      registered_capital, social_credit_code, state
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}, 
+      #{opCmyCode,jdbcType=VARCHAR}, #{opCmyName,jdbcType=VARCHAR}, #{opTime,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=BIGINT}, 
+      #{reserved5,jdbcType=BIGINT}, #{signature,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{adminIdNumberBackUrl,jdbcType=VARCHAR}, #{adminIdNumberFrontUrl,jdbcType=VARCHAR}, 
+      #{applyAuditTime,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, #{auditTime,jdbcType=VARCHAR}, 
+      #{authorizationLetterUrl,jdbcType=VARCHAR}, #{bankAccountEvidenceUrl,jdbcType=VARCHAR}, 
+      #{businessLicenseUrl,jdbcType=VARCHAR}, #{businessScope,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{cmyAddress,jdbcType=VARCHAR}, #{cmyCode,jdbcType=VARCHAR}, #{cmyName,jdbcType=VARCHAR}, 
+      #{cmyOrgCode,jdbcType=VARCHAR}, #{cmyPhone,jdbcType=VARCHAR}, #{cmyPostcode,jdbcType=VARCHAR}, 
+      #{cmyScale,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{establishmentTime,jdbcType=VARCHAR}, 
+      #{legalPersonCertificate,jdbcType=VARCHAR}, #{legalPersonIdNumberBackUrl,jdbcType=VARCHAR}, 
+      #{legalPersonIdNumberFrontUrl,jdbcType=VARCHAR}, #{legalPersonName,jdbcType=VARCHAR}, 
+      #{licenseNumber,jdbcType=VARCHAR}, #{logoUrl,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{registeredCapital,jdbcType=VARCHAR}, #{socialCreditCode,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="learning.model.CompanyInfo">
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code,
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name,
+      </if>
+      <if test="opTime != null">
+        op_time,
+      </if>
+      <if test="operatorCode != null">
+        operator_code,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="adminIdNumberBackUrl != null">
+        admin_id_number_back_url,
+      </if>
+      <if test="adminIdNumberFrontUrl != null">
+        admin_id_number_front_url,
+      </if>
+      <if test="applyAuditTime != null">
+        apply_audit_time,
+      </if>
+      <if test="auditOpinion != null">
+        audit_opinion,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+      <if test="authorizationLetterUrl != null">
+        authorization_letter_url,
+      </if>
+      <if test="bankAccountEvidenceUrl != null">
+        bank_account_evidence_url,
+      </if>
+      <if test="businessLicenseUrl != null">
+        business_license_url,
+      </if>
+      <if test="businessScope != null">
+        business_scope,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="cmyAddress != null">
+        cmy_address,
+      </if>
+      <if test="cmyCode != null">
+        cmy_code,
+      </if>
+      <if test="cmyName != null">
+        cmy_name,
+      </if>
+      <if test="cmyOrgCode != null">
+        cmy_org_code,
+      </if>
+      <if test="cmyPhone != null">
+        cmy_phone,
+      </if>
+      <if test="cmyPostcode != null">
+        cmy_postcode,
+      </if>
+      <if test="cmyScale != null">
+        cmy_scale,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="establishmentTime != null">
+        establishment_time,
+      </if>
+      <if test="legalPersonCertificate != null">
+        legal_person_certificate,
+      </if>
+      <if test="legalPersonIdNumberBackUrl != null">
+        legal_person_id_number_back_url,
+      </if>
+      <if test="legalPersonIdNumberFrontUrl != null">
+        legal_person_id_number_front_url,
+      </if>
+      <if test="legalPersonName != null">
+        legal_person_name,
+      </if>
+      <if test="licenseNumber != null">
+        license_number,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital,
+      </if>
+      <if test="socialCreditCode != null">
+        social_credit_code,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="adminIdNumberBackUrl != null">
+        #{adminIdNumberBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdNumberFrontUrl != null">
+        #{adminIdNumberFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAuditTime != null">
+        #{applyAuditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="auditOpinion != null">
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationLetterUrl != null">
+        #{authorizationLetterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountEvidenceUrl != null">
+        #{bankAccountEvidenceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null">
+        #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null">
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyAddress != null">
+        #{cmyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyCode != null">
+        #{cmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyName != null">
+        #{cmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyOrgCode != null">
+        #{cmyOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyPhone != null">
+        #{cmyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyPostcode != null">
+        #{cmyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyScale != null">
+        #{cmyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="establishmentTime != null">
+        #{establishmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonCertificate != null">
+        #{legalPersonCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIdNumberBackUrl != null">
+        #{legalPersonIdNumberBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIdNumberFrontUrl != null">
+        #{legalPersonIdNumberFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonName != null">
+        #{legalPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="socialCreditCode != null">
+        #{socialCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="learning.model.CompanyInfo">
+    update company_info
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        op_time = #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        operator_code = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="adminIdNumberBackUrl != null">
+        admin_id_number_back_url = #{adminIdNumberBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdNumberFrontUrl != null">
+        admin_id_number_front_url = #{adminIdNumberFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAuditTime != null">
+        apply_audit_time = #{applyAuditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="auditOpinion != null">
+        audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationLetterUrl != null">
+        authorization_letter_url = #{authorizationLetterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountEvidenceUrl != null">
+        bank_account_evidence_url = #{bankAccountEvidenceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null">
+        business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null">
+        business_scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyAddress != null">
+        cmy_address = #{cmyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyCode != null">
+        cmy_code = #{cmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyName != null">
+        cmy_name = #{cmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyOrgCode != null">
+        cmy_org_code = #{cmyOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyPhone != null">
+        cmy_phone = #{cmyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyPostcode != null">
+        cmy_postcode = #{cmyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cmyScale != null">
+        cmy_scale = #{cmyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="establishmentTime != null">
+        establishment_time = #{establishmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonCertificate != null">
+        legal_person_certificate = #{legalPersonCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIdNumberBackUrl != null">
+        legal_person_id_number_back_url = #{legalPersonIdNumberBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIdNumberFrontUrl != null">
+        legal_person_id_number_front_url = #{legalPersonIdNumberFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonName != null">
+        legal_person_name = #{legalPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        license_number = #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="socialCreditCode != null">
+        social_credit_code = #{socialCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="learning.model.CompanyInfo">
+    update company_info
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=VARCHAR},
+      operator_code = #{operatorCode,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=BIGINT},
+      reserved5 = #{reserved5,jdbcType=BIGINT},
+      signature = #{signature,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      admin_id_number_back_url = #{adminIdNumberBackUrl,jdbcType=VARCHAR},
+      admin_id_number_front_url = #{adminIdNumberFrontUrl,jdbcType=VARCHAR},
+      apply_audit_time = #{applyAuditTime,jdbcType=VARCHAR},
+      audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=VARCHAR},
+      authorization_letter_url = #{authorizationLetterUrl,jdbcType=VARCHAR},
+      bank_account_evidence_url = #{bankAccountEvidenceUrl,jdbcType=VARCHAR},
+      business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      business_scope = #{businessScope,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      cmy_address = #{cmyAddress,jdbcType=VARCHAR},
+      cmy_code = #{cmyCode,jdbcType=VARCHAR},
+      cmy_name = #{cmyName,jdbcType=VARCHAR},
+      cmy_org_code = #{cmyOrgCode,jdbcType=VARCHAR},
+      cmy_phone = #{cmyPhone,jdbcType=VARCHAR},
+      cmy_postcode = #{cmyPostcode,jdbcType=VARCHAR},
+      cmy_scale = #{cmyScale,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      establishment_time = #{establishmentTime,jdbcType=VARCHAR},
+      legal_person_certificate = #{legalPersonCertificate,jdbcType=VARCHAR},
+      legal_person_id_number_back_url = #{legalPersonIdNumberBackUrl,jdbcType=VARCHAR},
+      legal_person_id_number_front_url = #{legalPersonIdNumberFrontUrl,jdbcType=VARCHAR},
+      legal_person_name = #{legalPersonName,jdbcType=VARCHAR},
+      license_number = #{licenseNumber,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      social_credit_code = #{socialCreditCode,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

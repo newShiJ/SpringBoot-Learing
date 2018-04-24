@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.mapper.BillFeeMapper">
+  <resultMap id="BaseResultMap" type="learning.model.BillFee">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="op_cmy_code" jdbcType="VARCHAR" property="opCmyCode" />
+    <result column="op_cmy_name" jdbcType="VARCHAR" property="opCmyName" />
+    <result column="op_time" jdbcType="VARCHAR" property="opTime" />
+    <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="BIGINT" property="reserved4" />
+    <result column="reserved5" jdbcType="BIGINT" property="reserved5" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="adjust_count" jdbcType="INTEGER" property="adjustCount" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="bill_code" jdbcType="VARCHAR" property="billCode" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="days_type" jdbcType="VARCHAR" property="daysType" />
+    <result column="fee_type" jdbcType="VARCHAR" property="feeType" />
+    <result column="interval_type" jdbcType="VARCHAR" property="intervalType" />
+    <result column="manage_fee_url" jdbcType="VARCHAR" property="manageFeeUrl" />
+    <result column="payee_bank_account" jdbcType="VARCHAR" property="payeeBankAccount" />
+    <result column="payee_bank_card" jdbcType="VARCHAR" property="payeeBankCard" />
+    <result column="payee_cmy_code" jdbcType="VARCHAR" property="payeeCmyCode" />
+    <result column="payee_cmy_name" jdbcType="VARCHAR" property="payeeCmyName" />
+    <result column="payee_open_bank" jdbcType="VARCHAR" property="payeeOpenBank" />
+    <result column="payer_cmy_code" jdbcType="VARCHAR" property="payerCmyCode" />
+    <result column="payer_cmy_name" jdbcType="VARCHAR" property="payerCmyName" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="real_count" jdbcType="INTEGER" property="realCount" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="old_amount" jdbcType="BIGINT" property="oldAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, deleted, op_cmy_code, op_cmy_name, op_time, operator_code, operator_name, 
+    reserved1, reserved2, reserved3, reserved4, reserved5, signature, version, adjust_count, 
+    amount, bill_code, business_no, days_type, fee_type, interval_type, manage_fee_url, 
+    payee_bank_account, payee_bank_card, payee_cmy_code, payee_cmy_name, payee_open_bank, 
+    payer_cmy_code, payer_cmy_name, rate, real_count, status, old_amount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill_fee
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bill_fee
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="learning.model.BillFee">
+    insert into bill_fee (id, create_time, deleted, 
+      op_cmy_code, op_cmy_name, op_time, 
+      operator_code, operator_name, reserved1, 
+      reserved2, reserved3, reserved4, 
+      reserved5, signature, version, 
+      adjust_count, amount, bill_code, 
+      business_no, days_type, fee_type, 
+      interval_type, manage_fee_url, payee_bank_account, 
+      payee_bank_card, payee_cmy_code, payee_cmy_name, 
+      payee_open_bank, payer_cmy_code, payer_cmy_name, 
+      rate, real_count, status, 
+      old_amount)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}, 
+      #{opCmyCode,jdbcType=VARCHAR}, #{opCmyName,jdbcType=VARCHAR}, #{opTime,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=BIGINT}, 
+      #{reserved5,jdbcType=BIGINT}, #{signature,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{adjustCount,jdbcType=INTEGER}, #{amount,jdbcType=BIGINT}, #{billCode,jdbcType=VARCHAR}, 
+      #{businessNo,jdbcType=VARCHAR}, #{daysType,jdbcType=VARCHAR}, #{feeType,jdbcType=VARCHAR}, 
+      #{intervalType,jdbcType=VARCHAR}, #{manageFeeUrl,jdbcType=VARCHAR}, #{payeeBankAccount,jdbcType=VARCHAR}, 
+      #{payeeBankCard,jdbcType=VARCHAR}, #{payeeCmyCode,jdbcType=VARCHAR}, #{payeeCmyName,jdbcType=VARCHAR}, 
+      #{payeeOpenBank,jdbcType=VARCHAR}, #{payerCmyCode,jdbcType=VARCHAR}, #{payerCmyName,jdbcType=VARCHAR}, 
+      #{rate,jdbcType=DECIMAL}, #{realCount,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{oldAmount,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="learning.model.BillFee">
+    insert into bill_fee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code,
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name,
+      </if>
+      <if test="opTime != null">
+        op_time,
+      </if>
+      <if test="operatorCode != null">
+        operator_code,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="adjustCount != null">
+        adjust_count,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="businessNo != null">
+        business_no,
+      </if>
+      <if test="daysType != null">
+        days_type,
+      </if>
+      <if test="feeType != null">
+        fee_type,
+      </if>
+      <if test="intervalType != null">
+        interval_type,
+      </if>
+      <if test="manageFeeUrl != null">
+        manage_fee_url,
+      </if>
+      <if test="payeeBankAccount != null">
+        payee_bank_account,
+      </if>
+      <if test="payeeBankCard != null">
+        payee_bank_card,
+      </if>
+      <if test="payeeCmyCode != null">
+        payee_cmy_code,
+      </if>
+      <if test="payeeCmyName != null">
+        payee_cmy_name,
+      </if>
+      <if test="payeeOpenBank != null">
+        payee_open_bank,
+      </if>
+      <if test="payerCmyCode != null">
+        payer_cmy_code,
+      </if>
+      <if test="payerCmyName != null">
+        payer_cmy_name,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="realCount != null">
+        real_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="oldAmount != null">
+        old_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="adjustCount != null">
+        #{adjustCount,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="daysType != null">
+        #{daysType,jdbcType=VARCHAR},
+      </if>
+      <if test="feeType != null">
+        #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="intervalType != null">
+        #{intervalType,jdbcType=VARCHAR},
+      </if>
+      <if test="manageFeeUrl != null">
+        #{manageFeeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeBankAccount != null">
+        #{payeeBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeBankCard != null">
+        #{payeeBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCmyCode != null">
+        #{payeeCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCmyName != null">
+        #{payeeCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeOpenBank != null">
+        #{payeeOpenBank,jdbcType=VARCHAR},
+      </if>
+      <if test="payerCmyCode != null">
+        #{payerCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payerCmyName != null">
+        #{payerCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="realCount != null">
+        #{realCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="oldAmount != null">
+        #{oldAmount,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="learning.model.BillFee">
+    update bill_fee
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyCode != null">
+        op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCmyName != null">
+        op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null">
+        op_time = #{opTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null">
+        operator_code = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=BIGINT},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=BIGINT},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="adjustCount != null">
+        adjust_count = #{adjustCount,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="billCode != null">
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="daysType != null">
+        days_type = #{daysType,jdbcType=VARCHAR},
+      </if>
+      <if test="feeType != null">
+        fee_type = #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="intervalType != null">
+        interval_type = #{intervalType,jdbcType=VARCHAR},
+      </if>
+      <if test="manageFeeUrl != null">
+        manage_fee_url = #{manageFeeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeBankAccount != null">
+        payee_bank_account = #{payeeBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeBankCard != null">
+        payee_bank_card = #{payeeBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCmyCode != null">
+        payee_cmy_code = #{payeeCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCmyName != null">
+        payee_cmy_name = #{payeeCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeOpenBank != null">
+        payee_open_bank = #{payeeOpenBank,jdbcType=VARCHAR},
+      </if>
+      <if test="payerCmyCode != null">
+        payer_cmy_code = #{payerCmyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payerCmyName != null">
+        payer_cmy_name = #{payerCmyName,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="realCount != null">
+        real_count = #{realCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="oldAmount != null">
+        old_amount = #{oldAmount,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="learning.model.BillFee">
+    update bill_fee
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      op_cmy_code = #{opCmyCode,jdbcType=VARCHAR},
+      op_cmy_name = #{opCmyName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=VARCHAR},
+      operator_code = #{operatorCode,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=BIGINT},
+      reserved5 = #{reserved5,jdbcType=BIGINT},
+      signature = #{signature,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      adjust_count = #{adjustCount,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=BIGINT},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      business_no = #{businessNo,jdbcType=VARCHAR},
+      days_type = #{daysType,jdbcType=VARCHAR},
+      fee_type = #{feeType,jdbcType=VARCHAR},
+      interval_type = #{intervalType,jdbcType=VARCHAR},
+      manage_fee_url = #{manageFeeUrl,jdbcType=VARCHAR},
+      payee_bank_account = #{payeeBankAccount,jdbcType=VARCHAR},
+      payee_bank_card = #{payeeBankCard,jdbcType=VARCHAR},
+      payee_cmy_code = #{payeeCmyCode,jdbcType=VARCHAR},
+      payee_cmy_name = #{payeeCmyName,jdbcType=VARCHAR},
+      payee_open_bank = #{payeeOpenBank,jdbcType=VARCHAR},
+      payer_cmy_code = #{payerCmyCode,jdbcType=VARCHAR},
+      payer_cmy_name = #{payerCmyName,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DECIMAL},
+      real_count = #{realCount,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      old_amount = #{oldAmount,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

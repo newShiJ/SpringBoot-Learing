@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--通过这个配置文件，完成mybatis与数据库的连接  -->
+<configuration>
+    <plugins>
+        <plugin interceptor="com.chrhc.mybatis.locker.interceptor.OptimisticLocker">
+            <property name="versionColumn" value="version"/><!--数据库的列名-->
+            <property name="versionField" value="version"/> <!--java字段名-->
+        </plugin>
+    </plugins>
+</configuration>
